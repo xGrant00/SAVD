@@ -56,7 +56,7 @@ section{padding:160px 48px 120px;max-width:1400px;margin:0 auto;position:relativ
 .section-num::before{content:"";width:36px;height:1px;background:var(--ink)}
 
 /* Section headlines — Instrument Sans */
-h2.big{font-family:'Instrument Sans',sans-serif;font-size:clamp(56px,9vw,150px);line-height:.9;letter-spacing:-.035em;font-weight:600}
+h2.big{font-family:'Instrument Sans',sans-serif;font-size:clamp(44px,6.8vw,108px);line-height:.95;letter-spacing:-.03em;font-weight:600}
 
 .lede{font-size:clamp(18px,1.6vw,22px);line-height:1.45;max-width:560px;color:#3a3835;font-weight:400;letter-spacing:-.005em}
 
@@ -68,7 +68,7 @@ h2.big{font-family:'Instrument Sans',sans-serif;font-size:clamp(56px,9vw,150px);
 
 .hero-title{
   font-family:'Instrument Sans',sans-serif;
-  font-size:clamp(72px,14vw,240px);
+  font-size:clamp(60px,11vw,180px);
   line-height:.86;letter-spacing:-.045em;
   font-weight:600;margin:60px 0 0;
 }
@@ -88,7 +88,7 @@ h2.big{font-family:'Instrument Sans',sans-serif;font-size:clamp(56px,9vw,150px);
 @keyframes fill{0%{transform:translateY(-100%)}50%{transform:translateY(0)}100%{transform:translateY(100%)}}
 
 /* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
 @media (max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}}
 .stat{padding:60px 30px;border-right:1px solid var(--line);position:relative;overflow:hidden}
 .stat:last-child{border-right:none}
@@ -101,9 +101,6 @@ h2.big{font-family:'Instrument Sans',sans-serif;font-size:clamp(56px,9vw,150px);
 .logo-stage svg{width:min(72%,640px);height:auto;color:var(--paper);transition:transform .8s var(--ease-out)}
 .logo-stage:hover svg{transform:scale(1.06)}
 .logo-stage::before{content:"";position:absolute;inset:-100%;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.08),transparent 35%);pointer-events:none}
-.logo-marquee{position:absolute;bottom:30px;left:0;right:0;font-family:'Instrument Sans',sans-serif;font-size:16px;letter-spacing:.18em;text-transform:uppercase;color:#444;display:flex;gap:30px;white-space:nowrap;animation:tick 28s linear infinite}
-.logo-marquee span{display:inline-flex;gap:30px}
-.logo-marquee span::after{content:"○"}
 .logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
 @media (max-width:820px){.logo-grid{grid-template-columns:1fr}}
 .logo-card{border-radius:28px;padding:80px 30px;min-height:220px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);position:relative;overflow:hidden;transition:transform .6s var(--ease)}
@@ -187,7 +184,75 @@ h2.big{font-family:'Instrument Sans',sans-serif;font-size:clamp(56px,9vw,150px);
   background:rgba(255,255,255,.12);backdrop-filter:blur(10px);padding:6px 12px;border-radius:999px;z-index:2;
 }
 
-/* STORY — sticky scroll reveal */
+/* STATS wrapper inside container */
+.stats-wrap{max-width:1400px;margin:0 auto;padding:0 48px}
+@media (max-width:820px){.stats-wrap{padding:0 22px}}
+.stats{border:1px solid var(--line);border-radius:32px;overflow:hidden}
+
+
+/* LOGO LOCKUPS — 3 background variations under hero stage */
+.lockups{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+@media (max-width:820px){.lockups{grid-template-columns:1fr}}
+.lockup{
+  border-radius:28px;padding:70px 30px;min-height:200px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);position:relative;overflow:hidden;
+  transition:transform .6s var(--ease);
+}
+.lockup:hover{transform:translateY(-6px)}
+.lockup svg{width:80%;max-width:300px;height:auto}
+.lockup .tag{
+  position:absolute;top:18px;left:22px;
+  font-family:'Instrument Sans',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+}
+
+/* LOGO VARIANTS section */
+.variants-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+@media (max-width:980px){.variants-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:540px){.variants-grid{grid-template-columns:1fr}}
+.variant{
+  border-radius:24px;overflow:hidden;
+  border:1px solid var(--line);
+  display:flex;flex-direction:column;
+  transition:transform .5s var(--ease-out),box-shadow .5s var(--ease);
+}
+.variant:hover{transform:translateY(-6px);box-shadow:0 30px 60px -28px rgba(0,0,0,.22)}
+.variant .preview{
+  flex:1;min-height:180px;
+  display:flex;align-items:center;justify-content:center;
+  padding:42px 28px;position:relative;
+}
+.variant .preview svg{width:78%;max-width:240px;height:auto}
+.variant .info{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 18px;background:#fff;border-top:1px solid var(--line);gap:12px;
+}
+.variant .info .name{font-size:13px;font-weight:700;letter-spacing:-.005em}
+.variant .info .hex{font-size:10px;color:var(--mute);letter-spacing:.04em;margin-top:2px;font-weight:500}
+.variant .dl{display:flex;gap:6px}
+.variant .dl button{
+  font-family:'Instrument Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.04em;
+  padding:7px 12px;border-radius:999px;
+  border:1px solid var(--ink);background:#fff;color:var(--ink);
+  display:inline-flex;align-items:center;gap:5px;
+  cursor:pointer;transition:all .35s var(--ease);
+}
+.variant .dl button:hover{background:var(--ink);color:#fff}
+.variant .dl button svg{width:9px;height:9px}
+.font-link{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'Instrument Sans',sans-serif;font-size:12px;font-weight:600;
+  padding:11px 18px;border-radius:999px;border:1px solid var(--ink);
+  margin-top:14px;transition:all .4s var(--ease);
+  background:#fff;color:var(--ink);
+}
+.font-link:hover{background:var(--ink);color:#fff}
+.font-link svg{width:11px;height:11px}
+
+/* FOOTER logo */
+.footer-logo{display:flex;justify-content:center;margin-bottom:0;padding:0 0 30px}
+.footer-logo svg{width:100%;height:auto;max-width:none;color:var(--ink)}
 .story{position:relative;height:340vh;background:var(--paper);margin-top:80px}
 .story-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 8vw;max-width:1600px;margin:0 auto}
 @media (max-width:820px){.story-sticky{padding:0 22px}}
@@ -220,7 +285,7 @@ footer{padding:80px 48px 50px;max-width:1400px;margin:0 auto}
 .reveal-stagger.in > *:nth-child(5){transition-delay:.32s}
 
 /* Weight tune-up for utility labels (now Instrument Sans, was Bebas) */
-.section-num,.hero-meta-top,.hero-bottom .col h4,.scroll-indicator,.stat .lbl,.logo-marquee,.logo-card .tag,.swatch .meta .name,.swatch .copy,.type-controls label,.type-controls .val,.type-meta h3,.btn,.ticker-track,.story-eyebrow,.story-eyebrow .progress,.story-text .ref{font-weight:500}
+.section-num,.hero-meta-top,.hero-bottom .col h4,.scroll-indicator,.stat .lbl,.logo-card .tag,.swatch .meta .name,.swatch .copy,.type-controls label,.type-controls .val,.type-meta h3,.btn,.ticker-track,.story-eyebrow,.story-eyebrow .progress,.story-text .ref{font-weight:500}
 .section-num,.story-eyebrow,.type-meta h3,.hero-bottom .col h4,.stat .lbl{font-weight:700}
 .stat .num{font-weight:500;letter-spacing:-.04em}
 .swatch .meta .name{font-size:20px;letter-spacing:-.005em;text-transform:none}
@@ -252,7 +317,6 @@ footer{padding:80px 48px 50px;max-width:1400px;margin:0 auto}
   .stat .num{font-size:clamp(46px,12vw,64px)}
   .logo-stage{padding:70px 24px;border-radius:24px}
   .logo-stage svg{width:85%}
-  .logo-marquee{font-size:13px;bottom:18px}
   .logo-card{padding:50px 24px;min-height:160px;border-radius:22px}
   .color-row{grid-template-columns:repeat(2,1fr);gap:10px}
   .swatch{border-radius:20px}
@@ -278,7 +342,7 @@ footer{padding:80px 48px 50px;max-width:1400px;margin:0 auto}
 @media (max-width:480px){
   .hero-title{font-size:14vw}
   h2.big{font-size:11vw}
-  .stats{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr;border-radius:24px}
   .stat{border-right:none;border-bottom:1px solid var(--line)}
   .stat:last-child{border-bottom:none}
 }
@@ -318,35 +382,37 @@ footer{padding:80px 48px 50px;max-width:1400px;margin:0 auto}
     <div class="scroll-indicator"><span>Scroll</span><span class="arrow"></span></div>
     <div class="col" style="text-align:right">
       <h4>Section</h4>
-      <p>00 — Introduction<br>06 chapters · ∞ details</p>
+      <p>00 — Introduction<br>07 chapters · ∞ details</p>
     </div>
   </div>
 </section>
 
-<div class="stats reveal-stagger">
-  <div class="stat"><div class="num">06</div><div class="lbl">Brand Pillars</div></div>
+<div class="stats-wrap"><div class="stats reveal-stagger">
+  <div class="stat"><div class="num">07</div><div class="lbl">Brand Pillars</div></div>
   <div class="stat"><div class="num">09</div><div class="lbl">Garment Colors</div></div>
   <div class="stat"><div class="num">04</div><div class="lbl">Type Weights</div></div>
   <div class="stat"><div class="num">∞</div><div class="lbl">Possibilities</div></div>
-</div>
+</div></div>
 
 <section id="identity">
   <div class="section-head reveal"><span class="section-num">01 / Identity</span></div>
   <h2 class="big reveal">The mark that holds<br>it all together.</h2>
   <p class="lede reveal" style="margin-top:30px">Our wordmark is the cornerstone of every touchpoint. Treat it with reverence — give it space, keep it crisp, never distort it.</p>
   <div class="logo-stage reveal" id="logoStage">
-    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1110.5 295.03"> <defs> <style> .cls-1 { fill: currentColor; stroke-width: 0px; } .cls-2 { isolation: isolate; } </style> </defs> <g> <path class="cls-1" d="M200.61,133.92c0,41.04-33.75,62.91-100.98,62.91S0,172.26,0,133.92h45.36c1.08,19.71,23.76,29.7,58.05,29.7s51.03-9.45,51.03-23.76c0-19.44-29.16-17.55-80.73-26.19C22.14,105.03,5.94,89.37,5.94,59.67S27,0,96.39,0s92.61,25.38,93.69,58.86h-42.12c-1.62-13.5-17.28-25.65-52.11-25.65-38.88,0-48.06,10.53-48.06,23.49,0,17.82,31.32,18.9,64.53,23.49,52.11,7.29,88.29,11.61,88.29,53.73Z"/> <path class="cls-1" d="M816.21,3.78l-87.21,189h-53.46L588.06,3.78h46.17l68.04,156.33L770.04,3.78h46.17Z"/> <path class="cls-1" d="M1110.5,98.28c0,75.33-55.08,94.5-113.94,94.5h-85.86V3.78h85.86c58.86,0,113.94,19.17,113.94,94.5ZM1065.95,98.28c0-48.6-28.62-61.02-73.71-61.02h-37.8v122.04h37.8c45.09,0,73.71-12.15,73.71-61.02Z"/> </g> <polygon class="cls-1" points="425.25 3.78 371.79 3.78 284.31 192.78 330.48 192.78 346.68 155.79 346.92 155.79 361.31 122.58 361.26 122.58 398.52 36.72 450.23 155.79 450.36 155.79 466.29 192.78 512.46 192.78 425.25 3.78"/> <g class="cls-2"> <g class="cls-2"> <path class="cls-1" d="M150.11,274.29v6.11h14.92v4.32h-14.92v9.79h-5.65v-24.57h21.58v4.35h-15.93Z"/> <path class="cls-1" d="M199.92,289.69h-13.48l-2.11,4.81h-6l11.37-24.57h6.95l11.34,24.57h-6l-2.07-4.81ZM198.02,285.38l-4.84-11.16-4.84,11.16h9.69Z"/> <path class="cls-1" d="M230.14,269.93v24.57h-5.65v-24.57h5.65Z"/> <path class="cls-1" d="M271.94,274.29h-9.3v20.21h-5.65v-20.21h-9.3v-4.35h24.25v4.35Z"/> <path class="cls-1" d="M315.78,269.93v24.57h-5.65v-10.42h-14.99v10.42h-5.65v-24.57h5.65v9.79h14.99v-9.79h5.65Z"/> <path class="cls-1" d="M388.12,274.29v6.11h14.92v4.32h-14.92v9.79h-5.65v-24.57h21.58v4.35h-15.93Z"/> <path class="cls-1" d="M437.93,289.69h-13.48l-2.11,4.81h-6l11.37-24.57h6.95l11.34,24.57h-6l-2.07-4.81ZM436.03,285.38l-4.84-11.16-4.84,11.16h9.69Z"/> <path class="cls-1" d="M486.47,286.85c0,5.33-4.39,8.18-13.13,8.18s-12.95-3.19-12.95-8.18h5.9c.14,2.56,3.09,3.86,7.55,3.86s6.63-1.23,6.63-3.09c0-2.53-3.79-2.28-10.49-3.4-6.7-1.12-8.81-3.16-8.81-7.02s2.74-7.76,11.76-7.76,12.04,3.3,12.18,7.65h-5.48c-.21-1.75-2.25-3.33-6.77-3.33-5.05,0-6.25,1.37-6.25,3.05,0,2.32,4.07,2.46,8.39,3.05,6.77.95,11.48,1.51,11.48,6.98Z"/> <path class="cls-1" d="M530.31,269.93v24.57h-5.65v-10.42h-14.99v10.42h-5.65v-24.57h5.65v9.79h14.99v-9.79h5.65Z"/> <path class="cls-1" d="M554.92,269.93v24.57h-5.65v-24.57h5.65Z"/> <path class="cls-1" d="M601.77,282.22c0,9.41-7.54,12.81-14.63,12.81s-14.67-3.4-14.67-12.81,7.58-12.77,14.67-12.77,14.63,3.4,14.63,12.77ZM596.02,282.22c0-4.81-2.77-8.49-8.88-8.49s-8.88,3.68-8.88,8.49,2.77,8.53,8.88,8.53,8.88-3.69,8.88-8.53Z"/> <path class="cls-1" d="M644.95,269.93v24.57h-6.35l-13.62-17.55v17.55h-5.65v-24.57h6.32l13.62,17.58v-17.58h5.69Z"/> <path class="cls-1" d="M717.29,274.29v6.11h14.92v4.32h-14.92v9.79h-5.65v-24.57h21.58v4.35h-15.93Z"/> <path class="cls-1" d="M756.43,269.93v24.57h-5.65v-24.57h5.65Z"/> <path class="cls-1" d="M798.23,274.29h-9.3v20.21h-5.65v-20.21h-9.3v-4.35h24.25v4.35Z"/> <path class="cls-1" d="M841.4,269.93v24.57h-6.35l-13.62-17.55v17.55h-5.65v-24.57h6.32l13.62,17.58v-17.58h5.69Z"/> <path class="cls-1" d="M882.26,294.5h-21.9v-24.57h21.55v4.35h-15.9v5.44h14.92v4.32h-14.92v6.11h16.25v4.35Z"/> <path class="cls-1" d="M924.48,286.85c0,5.33-4.39,8.18-13.13,8.18s-12.95-3.19-12.95-8.18h5.9c.14,2.56,3.09,3.86,7.55,3.86s6.63-1.23,6.63-3.09c0-2.53-3.79-2.28-10.49-3.4s-8.81-3.16-8.81-7.02,2.74-7.76,11.76-7.76,12.04,3.3,12.18,7.65h-5.47c-.21-1.75-2.25-3.33-6.77-3.33-5.05,0-6.25,1.37-6.25,3.05,0,2.32,4.07,2.46,8.39,3.05,6.77.95,11.48,1.51,11.48,6.98Z"/> <path class="cls-1" d="M966.71,286.85c0,5.33-4.39,8.18-13.13,8.18s-12.95-3.19-12.95-8.18h5.9c.14,2.56,3.09,3.86,7.55,3.86s6.63-1.23,6.63-3.09c0-2.53-3.79-2.28-10.49-3.4s-8.81-3.16-8.81-7.02,2.74-7.76,11.76-7.76,12.04,3.3,12.18,7.65h-5.47c-.21-1.75-2.25-3.33-6.77-3.33-5.05,0-6.25,1.37-6.25,3.05,0,2.32,4.07,2.46,8.39,3.05,6.77.95,11.48,1.51,11.48,6.98Z"/> </g> </g></svg>
-    <div class="logo-marquee"><span>SAVD · CLOTHING · FAITH · STRENGTH · IDENTITY · COMMUNITY ·&nbsp;</span><span>SAVD · CLOTHING · FAITH · STRENGTH · IDENTITY · COMMUNITY ·&nbsp;</span></div>
+    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1110.5 295.03"> <defs> <style> .cls-1 { fill: currentColor; stroke-width: 0px; } .cls-2 { isolation: isolate; } </style> </defs> <g> <path class="cls-1" d="M200.61,133.92c0,41.04-33.75,62.91-100.98,62.91S0,172.26,0,133.92h45.36c1.08,19.71,23.76,29.7,58.05,29.7s51.03-9.45,51.03-23.76c0-19.44-29.16-17.55-80.73-26.19C22.14,105.03,5.94,89.37,5.94,59.67S27,0,96.39,0s92.61,25.38,93.69,58.86h-42.12c-1.62-13.5-17.28-25.65-52.11-25.65-38.88,0-48.06,10.53-48.06,23.49,0,17.82,31.32,18.9,64.53,23.49,52.11,7.29,88.29,11.61,88.29,53.73Z"/> <path class="cls-1" d="M816.21,3.78l-87.21,189h-53.46L588.06,3.78h46.17l68.04,156.33L770.04,3.78h46.17Z"/> <path class="cls-1" d="M1110.5,98.28c0,75.33-55.08,94.5-113.94,94.5h-85.86V3.78h85.86c58.86,0,113.94,19.17,113.94,94.5ZM1065.95,98.28c0-48.6-28.62-61.02-73.71-61.02h-37.8v122.04h37.8c45.09,0,73.71-12.15,73.71-61.02Z"/> </g> <polygon class="cls-1" points="425.25 3.78 371.79 3.78 284.31 192.78 330.48 192.78 346.68 155.79 346.92 155.79 361.31 122.58 361.26 122.58 398.52 36.72 450.23 155.79 450.36 155.79 466.29 192.78 512.46 192.78 425.25 3.78"/> <g class="cls-2"> <g class="cls-2"> <path class="cls-1" d="M150.11,274.29v6.11h14.92v4.32h-14.92v9.79h-5.65v-24.57h21.58v4.35h-15.93Z"/> <path class="cls-1" d="M199.92,289.69h-13.48l-2.11,4.81h-6l11.37-24.57h6.95l11.34,24.57h-6l-2.07-4.81ZM198.02,285.38l-4.84-11.16-4.84,11.16h9.69Z"/> <path class="cls-1" d="M230.14,269.93v24.57h-5.65v-24.57h5.65Z"/> <path class="cls-1" d="M271.94,274.29h-9.3v20.21h-5.65v-20.21h-9.3v-4.35h24.25v4.35Z"/> <path class="cls-1" d="M315.78,269.93v24.57h-5.65v-10.42h-14.99v10.42h-5.65v-24.57h5.65v9.79h14.99v-9.79h5.65Z"/> <path class="cls-1" d="M388.12,274.29v6.11h14.92v4.32h-14.92v9.79h-5.65v-24.57h21.58v4.35h-15.93Z"/> <path class="cls-1" d="M437.93,289.69h-13.48l-2.11,4.81h-6l11.37-24.57h6.95l11.34,24.57h-6l-2.07-4.81ZM436.03,285.38l-4.84-11.16-4.84,11.16h9.69Z"/> <path class="cls-1" d="M486.47,286.85c0,5.33-4.39,8.18-13.13,8.18s-12.95-3.19-12.95-8.18h5.9c.14,2.56,3.09,3.86,7.55,3.86s6.63-1.23,6.63-3.09c0-2.53-3.79-2.28-10.49-3.4-6.7-1.12-8.81-3.16-8.81-7.02s2.74-7.76,11.76-7.76,12.04,3.3,12.18,7.65h-5.48c-.21-1.75-2.25-3.33-6.77-3.33-5.05,0-6.25,1.37-6.25,3.05,0,2.32,4.07,2.46,8.39,3.05,6.77.95,11.48,1.51,11.48,6.98Z"/> <path class="cls-1" d="M530.31,269.93v24.57h-5.65v-10.42h-14.99v10.42h-5.65v-24.57h5.65v9.79h14.99v-9.79h5.65Z"/> <path class="cls-1" d="M554.92,269.93v24.57h-5.65v-24.57h5.65Z"/> <path class="cls-1" d="M601.77,282.22c0,9.41-7.54,12.81-14.63,12.81s-14.67-3.4-14.67-12.81,7.58-12.77,14.67-12.77,14.63,3.4,14.63,12.77ZM596.02,282.22c0-4.81-2.77-8.49-8.88-8.49s-8.88,3.68-8.88,8.49,2.77,8.53,8.88,8.53,8.88-3.69,8.88-8.53Z"/> <path class="cls-1" d="M644.95,269.93v24.57h-6.35l-13.62-17.55v17.55h-5.65v-24.57h6.32l13.62,17.58v-17.58h5.69Z"/> <path class="cls-1" d="M717.29,274.29v6.11h14.92v4.32h-14.92v9.79h-5.65v-24.57h21.58v4.35h-15.93Z"/> <path class="cls-1" d="M756.43,269.93v24.57h-5.65v-24.57h5.65Z"/> <path class="cls-1" d="M798.23,274.29h-9.3v20.21h-5.65v-20.21h-9.3v-4.35h24.25v4.35Z"/> <path class="cls-1" d="M841.4,269.93v24.57h-6.35l-13.62-17.55v17.55h-5.65v-24.57h6.32l13.62,17.58v-17.58h5.69Z"/> <path class="cls-1" d="M882.26,294.5h-21.9v-24.57h21.55v4.35h-15.9v5.44h14.92v4.32h-14.92v6.11h16.25v4.35Z"/> <path class="cls-1" d="M924.48,286.85c0,5.33-4.39,8.18-13.13,8.18s-12.95-3.19-12.95-8.18h5.9c.14,2.56,3.09,3.86,7.55,3.86s6.63-1.23,6.63-3.09c0-2.53-3.79-2.28-10.49-3.4s-8.81-3.16-8.81-7.02s2.74-7.76,11.76-7.76,12.04,3.3,12.18,7.65h-5.47c-.21-1.75-2.25-3.33-6.77-3.33-5.05,0-6.25,1.37-6.25,3.05,0,2.32,4.07,2.46,8.39,3.05,6.77.95,11.48,1.51,11.48,6.98Z"/> <path class="cls-1" d="M966.71,286.85c0,5.33-4.39,8.18-13.13,8.18s-12.95-3.19-12.95-8.18h5.9c.14,2.56,3.09,3.86,7.55,3.86s6.63-1.23,6.63-3.09c0-2.53-3.79-2.28-10.49-3.4s-8.81-3.16-8.81-7.02s2.74-7.76,11.76-7.76,12.04,3.3,12.18,7.65h-5.47c-.21-1.75-2.25-3.33-6.77-3.33-5.05,0-6.25,1.37-6.25,3.05,0,2.32,4.07,2.46,8.39,3.05,6.77.95,11.48,1.51,11.48,6.98Z"/> </g> </g></svg>
   </div>
-  <div class="logo-grid reveal-stagger">
-    <div class="logo-card lc-paper"><span class="tag">Paper</span><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1110.5 295.03"> <defs> <style> .cls-1 { fill: currentColor; stroke-width: 0px; } .cls-2 { isolation: isolate; } </style> </defs> <g> <path class="cls-1" d="M200.61,133.92c0,41.04-33.75,62.91-100.98,62.91S0,172.26,0,133.92h45.36c1.08,19.71,23.76,29.7,58.05,29.7s51.03-9.45,51.03-23.76c0-19.44-29.16-17.55-80.73-26.19C22.14,105.03,5.94,89.37,5.94,59.67S27,0,96.39,0s92.61,25.38,93.69,58.86h-42.12c-1.62-13.5-17.28-25.65-52.11-25.65-38.88,0-48.06,10.53-48.06,23.49,0,17.82,31.32,18.9,64.53,23.49,52.11,7.29,88.29,11.61,88.29,53.73Z"/> <path class="cls-1" d="M816.21,3.78l-87.21,189h-53.46L588.06,3.78h46.17l68.04,156.33L770.04,3.78h46.17Z"/> <path class="cls-1" d="M1110.5,98.28c0,75.33-55.08,94.5-113.94,94.5h-85.86V3.78h85.86c58.86,0,113.94,19.17,113.94,94.5ZM1065.95,98.28c0-48.6-28.62-61.02-73.71-61.02h-37.8v122.04h37.8c45.09,0,73.71-12.15,73.71-61.02Z"/> </g> <polygon class="cls-1" points="425.25 3.78 371.79 3.78 284.31 192.78 330.48 192.78 346.68 155.79 346.92 155.79 361.31 122.58 361.26 122.58 398.52 36.72 450.23 155.79 450.36 155.79 466.29 192.78 512.46 192.78 425.25 3.78"/> <g class="cls-2"> <g class="cls-2"> <path class="cls-1" d="M150.11,274.29v6.11h14.92v4.32h-14.92v9.79h-5.65v-24.57h21.58v4.35h-15.93Z"/> <path class="cls-1" d="M199.92,289.69h-13.48l-2.11,4.81h-6l11.37-24.57h6.95l11.34,24.57h-6l-2.07-4.81ZM198.02,285.38l-4.84-11.16-4.84,11.16h9.69Z"/> <path class="cls-1" d="M230.14,269.93v24.57h-5.65v-24.57h5.65Z"/> <path class="cls-1" d="M271.94,274.29h-9.3v20.21h-5.65v-20.21h-9.3v-4.35h24.25v4.35Z"/> <path class="cls-1" d="M315.78,269.93v24.57h-5.65v-10.42h-14.99v10.42h-5.65v-24.57h5.65v9.79h14.99v-9.79h5.65Z"/> <path class="cls-1" d="M388.12,274.29v6.11h14.92v4.32h-14.92v9.79h-5.65v-24.57h21.58v4.35h-15.93Z"/> <path class="cls-1" d="M437.93,289.69h-13.48l-2.11,4.81h-6l11.37-24.57h6.95l11.34,24.57h-6l-2.07-4.81ZM436.03,285.38l-4.84-11.16-4.84,11.16h9.69Z"/> <path class="cls-1" d="M486.47,286.85c0,5.33-4.39,8.18-13.13,8.18s-12.95-3.19-12.95-8.18h5.9c.14,2.56,3.09,3.86,7.55,3.86s6.63-1.23,6.63-3.09c0-2.53-3.79-2.28-10.49-3.4-6.7-1.12-8.81-3.16-8.81-7.02s2.74-7.76,11.76-7.76,12.04,3.3,12.18,7.65h-5.48c-.21-1.75-2.25-3.33-6.77-3.33-5.05,0-6.25,1.37-6.25,3.05,0,2.32,4.07,2.46,8.39,3.05,6.77.95,11.48,1.51,11.48,6.98Z"/> <path class="cls-1" d="M530.31,269.93v24.57h-5.65v-10.42h-14.99v10.42h-5.65v-24.57h5.65v9.79h14.99v-9.79h5.65Z"/> <path class="cls-1" d="M554.92,269.93v24.57h-5.65v-24.57h5.65Z"/> <path class="cls-1" d="M601.77,282.22c0,9.41-7.54,12.81-14.63,12.81s-14.67-3.4-14.67-12.81,7.58-12.77,14.67-12.77,14.63,3.4,14.63,12.77ZM596.02,282.22c0-4.81-2.77-8.49-8.88-8.49s-8.88,3.68-8.88,8.49,2.77,8.53,8.88,8.53,8.88-3.69,8.88-8.53Z"/> <path class="cls-1" d="M644.95,269.93v24.57h-6.35l-13.62-17.55v17.55h-5.65v-24.57h6.32l13.62,17.58v-17.58h5.69Z"/> <path class="cls-1" d="M717.29,274.29v6.11h14.92v4.32h-14.92v9.79h-5.65v-24.57h21.58v4.35h-15.93Z"/> <path class="cls-1" d="M756.43,269.93v24.57h-5.65v-24.57h5.65Z"/> <path class="cls-1" d="M798.23,274.29h-9.3v20.21h-5.65v-20.21h-9.3v-4.35h24.25v4.35Z"/> <path class="cls-1" d="M841.4,269.93v24.57h-6.35l-13.62-17.55v17.55h-5.65v-24.57h6.32l13.62,17.58v-17.58h5.69Z"/> <path class="cls-1" d="M882.26,294.5h-21.9v-24.57h21.55v4.35h-15.9v5.44h14.92v4.32h-14.92v6.11h16.25v4.35Z"/> <path class="cls-1" d="M924.48,286.85c0,5.33-4.39,8.18-13.13,8.18s-12.95-3.19-12.95-8.18h5.9c.14,2.56,3.09,3.86,7.55,3.86s6.63-1.23,6.63-3.09c0-2.53-3.79-2.28-10.49-3.4s-8.81-3.16-8.81-7.02,2.74-7.76,11.76-7.76,12.04,3.3,12.18,7.65h-5.47c-.21-1.75-2.25-3.33-6.77-3.33-5.05,0-6.25,1.37-6.25,3.05,0,2.32,4.07,2.46,8.39,3.05,6.77.95,11.48,1.51,11.48,6.98Z"/> <path class="cls-1" d="M966.71,286.85c0,5.33-4.39,8.18-13.13,8.18s-12.95-3.19-12.95-8.18h5.9c.14,2.56,3.09,3.86,7.55,3.86s6.63-1.23,6.63-3.09c0-2.53-3.79-2.28-10.49-3.4s-8.81-3.16-8.81-7.02,2.74-7.76,11.76-7.76,12.04,3.3,12.18,7.65h-5.47c-.21-1.75-2.25-3.33-6.77-3.33-5.05,0-6.25,1.37-6.25,3.05,0,2.32,4.07,2.46,8.39,3.05,6.77.95,11.48,1.51,11.48,6.98Z"/> </g> </g></svg></div>
-    <div class="logo-card lc-ink"><span class="tag">Ink</span><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1110.5 295.03"> <defs> <style> .cls-1 { fill: currentColor; stroke-width: 0px; } .cls-2 { isolation: isolate; } </style> </defs> <g> <path class="cls-1" d="M200.61,133.92c0,41.04-33.75,62.91-100.98,62.91S0,172.26,0,133.92h45.36c1.08,19.71,23.76,29.7,58.05,29.7s51.03-9.45,51.03-23.76c0-19.44-29.16-17.55-80.73-26.19C22.14,105.03,5.94,89.37,5.94,59.67S27,0,96.39,0s92.61,25.38,93.69,58.86h-42.12c-1.62-13.5-17.28-25.65-52.11-25.65-38.88,0-48.06,10.53-48.06,23.49,0,17.82,31.32,18.9,64.53,23.49,52.11,7.29,88.29,11.61,88.29,53.73Z"/> <path class="cls-1" d="M816.21,3.78l-87.21,189h-53.46L588.06,3.78h46.17l68.04,156.33L770.04,3.78h46.17Z"/> <path class="cls-1" d="M1110.5,98.28c0,75.33-55.08,94.5-113.94,94.5h-85.86V3.78h85.86c58.86,0,113.94,19.17,113.94,94.5ZM1065.95,98.28c0-48.6-28.62-61.02-73.71-61.02h-37.8v122.04h37.8c45.09,0,73.71-12.15,73.71-61.02Z"/> </g> <polygon class="cls-1" points="425.25 3.78 371.79 3.78 284.31 192.78 330.48 192.78 346.68 155.79 346.92 155.79 361.31 122.58 361.26 122.58 398.52 36.72 450.23 155.79 450.36 155.79 466.29 192.78 512.46 192.78 425.25 3.78"/> <g class="cls-2"> <g class="cls-2"> <path class="cls-1" d="M150.11,274.29v6.11h14.92v4.32h-14.92v9.79h-5.65v-24.57h21.58v4.35h-15.93Z"/> <path class="cls-1" d="M199.92,289.69h-13.48l-2.11,4.81h-6l11.37-24.57h6.95l11.34,24.57h-6l-2.07-4.81ZM198.02,285.38l-4.84-11.16-4.84,11.16h9.69Z"/> <path class="cls-1" d="M230.14,269.93v24.57h-5.65v-24.57h5.65Z"/> <path class="cls-1" d="M271.94,274.29h-9.3v20.21h-5.65v-20.21h-9.3v-4.35h24.25v4.35Z"/> <path class="cls-1" d="M315.78,269.93v24.57h-5.65v-10.42h-14.99v10.42h-5.65v-24.57h5.65v9.79h14.99v-9.79h5.65Z"/> <path class="cls-1" d="M388.12,274.29v6.11h14.92v4.32h-14.92v9.79h-5.65v-24.57h21.58v4.35h-15.93Z"/> <path class="cls-1" d="M437.93,289.69h-13.48l-2.11,4.81h-6l11.37-24.57h6.95l11.34,24.57h-6l-2.07-4.81ZM436.03,285.38l-4.84-11.16-4.84,11.16h9.69Z"/> <path class="cls-1" d="M486.47,286.85c0,5.33-4.39,8.18-13.13,8.18s-12.95-3.19-12.95-8.18h5.9c.14,2.56,3.09,3.86,7.55,3.86s6.63-1.23,6.63-3.09c0-2.53-3.79-2.28-10.49-3.4-6.7-1.12-8.81-3.16-8.81-7.02s2.74-7.76,11.76-7.76,12.04,3.3,12.18,7.65h-5.48c-.21-1.75-2.25-3.33-6.77-3.33-5.05,0-6.25,1.37-6.25,3.05,0,2.32,4.07,2.46,8.39,3.05,6.77.95,11.48,1.51,11.48,6.98Z"/> <path class="cls-1" d="M530.31,269.93v24.57h-5.65v-10.42h-14.99v10.42h-5.65v-24.57h5.65v9.79h14.99v-9.79h5.65Z"/> <path class="cls-1" d="M554.92,269.93v24.57h-5.65v-24.57h5.65Z"/> <path class="cls-1" d="M601.77,282.22c0,9.41-7.54,12.81-14.63,12.81s-14.67-3.4-14.67-12.81,7.58-12.77,14.67-12.77,14.63,3.4,14.63,12.77ZM596.02,282.22c0-4.81-2.77-8.49-8.88-8.49s-8.88,3.68-8.88,8.49,2.77,8.53,8.88,8.53,8.88-3.69,8.88-8.53Z"/> <path class="cls-1" d="M644.95,269.93v24.57h-6.35l-13.62-17.55v17.55h-5.65v-24.57h6.32l13.62,17.58v-17.58h5.69Z"/> <path class="cls-1" d="M717.29,274.29v6.11h14.92v4.32h-14.92v9.79h-5.65v-24.57h21.58v4.35h-15.93Z"/> <path class="cls-1" d="M756.43,269.93v24.57h-5.65v-24.57h5.65Z"/> <path class="cls-1" d="M798.23,274.29h-9.3v20.21h-5.65v-20.21h-9.3v-4.35h24.25v4.35Z"/> <path class="cls-1" d="M841.4,269.93v24.57h-6.35l-13.62-17.55v17.55h-5.65v-24.57h6.32l13.62,17.58v-17.58h5.69Z"/> <path class="cls-1" d="M882.26,294.5h-21.9v-24.57h21.55v4.35h-15.9v5.44h14.92v4.32h-14.92v6.11h16.25v4.35Z"/> <path class="cls-1" d="M924.48,286.85c0,5.33-4.39,8.18-13.13,8.18s-12.95-3.19-12.95-8.18h5.9c.14,2.56,3.09,3.86,7.55,3.86s6.63-1.23,6.63-3.09c0-2.53-3.79-2.28-10.49-3.4s-8.81-3.16-8.81-7.02,2.74-7.76,11.76-7.76,12.04,3.3,12.18,7.65h-5.47c-.21-1.75-2.25-3.33-6.77-3.33-5.05,0-6.25,1.37-6.25,3.05,0,2.32,4.07,2.46,8.39,3.05,6.77.95,11.48,1.51,11.48,6.98Z"/> <path class="cls-1" d="M966.71,286.85c0,5.33-4.39,8.18-13.13,8.18s-12.95-3.19-12.95-8.18h5.9c.14,2.56,3.09,3.86,7.55,3.86s6.63-1.23,6.63-3.09c0-2.53-3.79-2.28-10.49-3.4s-8.81-3.16-8.81-7.02,2.74-7.76,11.76-7.76,12.04,3.3,12.18,7.65h-5.47c-.21-1.75-2.25-3.33-6.77-3.33-5.05,0-6.25,1.37-6.25,3.05,0,2.32,4.07,2.46,8.39,3.05,6.77.95,11.48,1.51,11.48,6.98Z"/> </g> </g></svg></div>
-    <div class="logo-card lc-bone"><span class="tag">Bone</span><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1110.5 295.03"> <defs> <style> .cls-1 { fill: currentColor; stroke-width: 0px; } .cls-2 { isolation: isolate; } </style> </defs> <g> <path class="cls-1" d="M200.61,133.92c0,41.04-33.75,62.91-100.98,62.91S0,172.26,0,133.92h45.36c1.08,19.71,23.76,29.7,58.05,29.7s51.03-9.45,51.03-23.76c0-19.44-29.16-17.55-80.73-26.19C22.14,105.03,5.94,89.37,5.94,59.67S27,0,96.39,0s92.61,25.38,93.69,58.86h-42.12c-1.62-13.5-17.28-25.65-52.11-25.65-38.88,0-48.06,10.53-48.06,23.49,0,17.82,31.32,18.9,64.53,23.49,52.11,7.29,88.29,11.61,88.29,53.73Z"/> <path class="cls-1" d="M816.21,3.78l-87.21,189h-53.46L588.06,3.78h46.17l68.04,156.33L770.04,3.78h46.17Z"/> <path class="cls-1" d="M1110.5,98.28c0,75.33-55.08,94.5-113.94,94.5h-85.86V3.78h85.86c58.86,0,113.94,19.17,113.94,94.5ZM1065.95,98.28c0-48.6-28.62-61.02-73.71-61.02h-37.8v122.04h37.8c45.09,0,73.71-12.15,73.71-61.02Z"/> </g> <polygon class="cls-1" points="425.25 3.78 371.79 3.78 284.31 192.78 330.48 192.78 346.68 155.79 346.92 155.79 361.31 122.58 361.26 122.58 398.52 36.72 450.23 155.79 450.36 155.79 466.29 192.78 512.46 192.78 425.25 3.78"/> <g class="cls-2"> <g class="cls-2"> <path class="cls-1" d="M150.11,274.29v6.11h14.92v4.32h-14.92v9.79h-5.65v-24.57h21.58v4.35h-15.93Z"/> <path class="cls-1" d="M199.92,289.69h-13.48l-2.11,4.81h-6l11.37-24.57h6.95l11.34,24.57h-6l-2.07-4.81ZM198.02,285.38l-4.84-11.16-4.84,11.16h9.69Z"/> <path class="cls-1" d="M230.14,269.93v24.57h-5.65v-24.57h5.65Z"/> <path class="cls-1" d="M271.94,274.29h-9.3v20.21h-5.65v-20.21h-9.3v-4.35h24.25v4.35Z"/> <path class="cls-1" d="M315.78,269.93v24.57h-5.65v-10.42h-14.99v10.42h-5.65v-24.57h5.65v9.79h14.99v-9.79h5.65Z"/> <path class="cls-1" d="M388.12,274.29v6.11h14.92v4.32h-14.92v9.79h-5.65v-24.57h21.58v4.35h-15.93Z"/> <path class="cls-1" d="M437.93,289.69h-13.48l-2.11,4.81h-6l11.37-24.57h6.95l11.34,24.57h-6l-2.07-4.81ZM436.03,285.38l-4.84-11.16-4.84,11.16h9.69Z"/> <path class="cls-1" d="M486.47,286.85c0,5.33-4.39,8.18-13.13,8.18s-12.95-3.19-12.95-8.18h5.9c.14,2.56,3.09,3.86,7.55,3.86s6.63-1.23,6.63-3.09c0-2.53-3.79-2.28-10.49-3.4-6.7-1.12-8.81-3.16-8.81-7.02s2.74-7.76,11.76-7.76,12.04,3.3,12.18,7.65h-5.48c-.21-1.75-2.25-3.33-6.77-3.33-5.05,0-6.25,1.37-6.25,3.05,0,2.32,4.07,2.46,8.39,3.05,6.77.95,11.48,1.51,11.48,6.98Z"/> <path class="cls-1" d="M530.31,269.93v24.57h-5.65v-10.42h-14.99v10.42h-5.65v-24.57h5.65v9.79h14.99v-9.79h5.65Z"/> <path class="cls-1" d="M554.92,269.93v24.57h-5.65v-24.57h5.65Z"/> <path class="cls-1" d="M601.77,282.22c0,9.41-7.54,12.81-14.63,12.81s-14.67-3.4-14.67-12.81,7.58-12.77,14.67-12.77,14.63,3.4,14.63,12.77ZM596.02,282.22c0-4.81-2.77-8.49-8.88-8.49s-8.88,3.68-8.88,8.49,2.77,8.53,8.88,8.53,8.88-3.69,8.88-8.53Z"/> <path class="cls-1" d="M644.95,269.93v24.57h-6.35l-13.62-17.55v17.55h-5.65v-24.57h6.32l13.62,17.58v-17.58h5.69Z"/> <path class="cls-1" d="M717.29,274.29v6.11h14.92v4.32h-14.92v9.79h-5.65v-24.57h21.58v4.35h-15.93Z"/> <path class="cls-1" d="M756.43,269.93v24.57h-5.65v-24.57h5.65Z"/> <path class="cls-1" d="M798.23,274.29h-9.3v20.21h-5.65v-20.21h-9.3v-4.35h24.25v4.35Z"/> <path class="cls-1" d="M841.4,269.93v24.57h-6.35l-13.62-17.55v17.55h-5.65v-24.57h6.32l13.62,17.58v-17.58h5.69Z"/> <path class="cls-1" d="M882.26,294.5h-21.9v-24.57h21.55v4.35h-15.9v5.44h14.92v4.32h-14.92v6.11h16.25v4.35Z"/> <path class="cls-1" d="M924.48,286.85c0,5.33-4.39,8.18-13.13,8.18s-12.95-3.19-12.95-8.18h5.9c.14,2.56,3.09,3.86,7.55,3.86s6.63-1.23,6.63-3.09c0-2.53-3.79-2.28-10.49-3.4s-8.81-3.16-8.81-7.02,2.74-7.76,11.76-7.76,12.04,3.3,12.18,7.65h-5.47c-.21-1.75-2.25-3.33-6.77-3.33-5.05,0-6.25,1.37-6.25,3.05,0,2.32,4.07,2.46,8.39,3.05,6.77.95,11.48,1.51,11.48,6.98Z"/> <path class="cls-1" d="M966.71,286.85c0,5.33-4.39,8.18-13.13,8.18s-12.95-3.19-12.95-8.18h5.9c.14,2.56,3.09,3.86,7.55,3.86s6.63-1.23,6.63-3.09c0-2.53-3.79-2.28-10.49-3.4s-8.81-3.16-8.81-7.02,2.74-7.76,11.76-7.76,12.04,3.3,12.18,7.65h-5.47c-.21-1.75-2.25-3.33-6.77-3.33-5.05,0-6.25,1.37-6.25,3.05,0,2.32,4.07,2.46,8.39,3.05,6.77.95,11.48,1.51,11.48,6.98Z"/> </g> </g></svg></div>
-  </div>
+  <div class="lockups reveal-stagger" id="lockups"></div>
+</section>
+
+<section id="variants">
+  <div class="section-head reveal"><span class="section-num">02 / Logo Variants</span></div>
+  <h2 class="big reveal">Every color,<br>ready to ship.</h2>
+  <p class="lede reveal" style="margin-top:30px">The wordmark in every palette color, downloadable as scalable SVG or transparent PNG. Pick a color, click, and you're set.</p>
+  <div class="variants-grid reveal-stagger" id="variantsGrid"></div>
 </section>
 
 <section id="color">
-  <div class="section-head reveal"><span class="section-num">02 / Palette</span></div>
+  <div class="section-head reveal"><span class="section-num">03 / Palette</span></div>
   <h2 class="big reveal">Tones drawn<br>from the cloth.</h2>
   <p class="lede reveal" style="margin-top:30px">A foundation of black and bone, accented with deep, considered hues from our garment line. Hover and click to copy.</p>
   <div style="margin-top:60px">
@@ -360,7 +426,7 @@ footer{padding:80px 48px 50px;max-width:1400px;margin:0 auto}
 </section>
 
 <section id="type">
-  <div class="section-head reveal"><span class="section-num">03 / Typography</span></div>
+  <div class="section-head reveal"><span class="section-num">04 / Typography</span></div>
   <h2 class="big reveal">Two voices,<br>one system.</h2>
   <p class="lede reveal" style="margin-top:30px">Instrument Sans is the voice of the brand — used everywhere across the website, product, and UI. Bebas Neue is reserved exclusively for marketing material, posters, and campaign work.</p>
   <div class="type-controls reveal" style="margin-top:50px">
@@ -372,6 +438,7 @@ footer{padding:80px 48px 50px;max-width:1400px;margin:0 auto}
     <div class="type-meta">
       <h3>Instrument Sans</h3>
       <p>Primary typeface<br>Display, body, UI<br>400 — 700 + Italic</p>
+      <a href="https://fonts.google.com/specimen/Instrument+Sans" target="_blank" rel="noopener" class="font-link">Get on Google Fonts <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
     </div>
     <div class="type-sample">
       <div class="specimen" id="specimenLive">Strength &amp; grace.</div>
@@ -389,6 +456,7 @@ footer{padding:80px 48px 50px;max-width:1400px;margin:0 auto}
     <div class="type-meta">
       <h3>Bebas Neue</h3>
       <p>Marketing only<br>Posters &amp; campaigns<br>Uppercase, never on web</p>
+      <a href="https://fonts.google.com/specimen/Bebas+Neue" target="_blank" rel="noopener" class="font-link">Get on Google Fonts <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
     </div>
     <div class="type-sample">
       <div class="specimen bebas">Walk by faith.</div>
@@ -398,7 +466,7 @@ footer{padding:80px 48px 50px;max-width:1400px;margin:0 auto}
 </section>
 
 <section id="ui">
-  <div class="section-head reveal"><span class="section-num">04 / Interface</span></div>
+  <div class="section-head reveal"><span class="section-num">05 / Interface</span></div>
   <h2 class="big reveal">Pill-shaped,<br>fully rounded.</h2>
   <p class="lede reveal" style="margin-top:30px">Soft on the edges, sharp in voice. Two button styles — black and white — with a hover that fills from the bottom.</p>
   <div class="btn-stage reveal-stagger">
@@ -409,7 +477,7 @@ footer{padding:80px 48px 50px;max-width:1400px;margin:0 auto}
 </section>
 
 <section id="posters">
-  <div class="section-head reveal"><span class="section-num">05 / In the Wild</span></div>
+  <div class="section-head reveal"><span class="section-num">06 / In the Wild</span></div>
   <h2 class="big reveal">Posters &amp;<br>campaigns.</h2>
   <p class="lede reveal" style="margin-top:30px">How the brand looks when it leaves the guidelines — high contrast, type-led, unmistakably SAVD.</p>
   <div class="poster-grid reveal-stagger">
@@ -439,12 +507,13 @@ footer{padding:80px 48px 50px;max-width:1400px;margin:0 auto}
 
 <section class="story" id="story">
   <div class="story-sticky">
-    <div class="story-eyebrow">06 / Story <span class="progress" id="storyProgress">00%</span></div>
+    <div class="story-eyebrow">07 / Story <span class="progress" id="storyProgress">00%</span></div>
     <p class="story-text" id="storyText"></p>
   </div>
 </section>
 
 <footer>
+  <div class="footer-logo reveal" id="footerLogoSlot"></div>
   <div class="footer-bottom">
     <div>© 2026 SAVD Clothing — Brand Guidelines v1.0</div>
     <div>Faith · Strength · Community</div>
@@ -545,6 +614,100 @@ window.addEventListener('scroll', () => {
   if(!storyTicking){ requestAnimationFrame(()=>{updateStory();storyTicking=false}); storyTicking = true; }
 });
 updateStory();
+
+/* === LOGO VARIANTS === */
+const variantColors = [
+  {name:'Ink',      hex:'#0a0a0a', bg:'#fafaf9'},
+  {name:'Paper',    hex:'#fafaf9', bg:'#0a0a0a'},
+  {name:'Bone',     hex:'#f7eee0', bg:'#0a0a0a'},
+  {name:'Ash',      hex:'#bcbcbc', bg:'#0a0a0a'},
+  {name:'Stone',    hex:'#5c504d', bg:'#fafaf9'},
+  {name:'Burgundy', hex:'#633242', bg:'#fafaf9'},
+  {name:'Forest',   hex:'#024a31', bg:'#fafaf9'},
+  {name:'Sage',     hex:'#9c9b80', bg:'#fafaf9'},
+  {name:'Navy',     hex:'#294999', bg:'#fafaf9'},
+];
+const sourceSvg = document.querySelector('#logoStage svg').outerHTML;
+function colorize(color){
+  return sourceSvg
+    .replace(/<defs>[\s\S]*?<\/defs>/, '')
+    .replace(/class="cls-1"/g, `fill="${color}"`);
+}
+
+/* === LOGO LOCKUPS (Identity section) === */
+const lockupConfigs = [
+  {tag:'Paper', bg:'#fafaf9', logo:'#0a0a0a', tagColor:'#9b9893'},
+  {tag:'Ink',   bg:'#0a0a0a', logo:'#fafaf9', tagColor:'#666'},
+  {tag:'Bone',  bg:'#f7eee0', logo:'#0a0a0a', tagColor:'#9b9893'},
+];
+const lockupsEl = document.getElementById('lockups');
+if (lockupsEl) {
+  lockupsEl.innerHTML = lockupConfigs.map(c => `
+    <div class="lockup" style="background:${c.bg};border-color:${c.bg === '#fafaf9' ? 'var(--line)' : c.bg}">
+      <span class="tag" style="color:${c.tagColor}">${c.tag}</span>
+      ${colorize(c.logo)}
+    </div>
+  `).join('');
+}
+const dlIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><polyline points="6 12 12 18 18 12"/><line x1="4" y1="20" x2="20" y2="20"/></svg>';
+function downloadSvg(name, color){
+  const blob = new Blob([colorize(color)], {type:'image/svg+xml;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `savd-logo-${name.toLowerCase()}.svg`;
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
+function downloadPng(name, color){
+  const blob = new Blob([colorize(color)], {type:'image/svg+xml;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const img = new Image();
+  img.onload = () => {
+    const scale = 4;
+    const canvas = document.createElement('canvas');
+    canvas.width  = Math.round(1110.5 * scale);
+    canvas.height = Math.round(295.03 * scale);
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    URL.revokeObjectURL(url);
+    canvas.toBlob(b => {
+      const u = URL.createObjectURL(b);
+      const a = document.createElement('a');
+      a.href = u; a.download = `savd-logo-${name.toLowerCase()}.png`;
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(u);
+    }, 'image/png');
+  };
+  img.onerror = () => alert('PNG export failed.');
+  img.src = url;
+}
+const grid = document.getElementById('variantsGrid');
+grid.innerHTML = variantColors.map(c => `
+  <div class="variant">
+    <div class="preview" style="background:${c.bg}">${colorize(c.hex)}</div>
+    <div class="info">
+      <div>
+        <div class="name">${c.name}</div>
+        <div class="hex">${c.hex.toUpperCase()}</div>
+      </div>
+      <div class="dl">
+        <button data-name="${c.name}" data-color="${c.hex}" data-fmt="svg">${dlIcon} SVG</button>
+        <button data-name="${c.name}" data-color="${c.hex}" data-fmt="png">${dlIcon} PNG</button>
+      </div>
+    </div>
+  </div>
+`).join('');
+grid.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const {name, color, fmt} = btn.dataset;
+    if (fmt === 'svg') downloadSvg(name, color);
+    else downloadPng(name, color);
+  });
+});
+
+/* === FOOTER LOGO === */
+const navLogoEl = document.querySelector('nav .brand svg');
+if (navLogoEl) document.getElementById('footerLogoSlot').innerHTML = navLogoEl.outerHTML;
 </script>
 </body>
 </html>
